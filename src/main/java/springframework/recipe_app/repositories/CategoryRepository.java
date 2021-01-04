@@ -1,4 +1,4 @@
-package springframework.repositories;
+package springframework.recipe_app.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import springframework.recipe_app.domain.Category;

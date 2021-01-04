@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import springframework.recipe_app.domain.Category;
 import springframework.recipe_app.domain.UnitOfMeasure;
-import springframework.repositories.CategoryRepository;
-import springframework.repositories.UnitOfMeasureRepository;
+import springframework.recipe_app.repositories.CategoryRepository;
+import springframework.recipe_app.repositories.UnitOfMeasureRepository;
 
 import java.util.Optional;
 
