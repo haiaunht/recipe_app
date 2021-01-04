@@ -1,17 +1,21 @@
 package springframework.recipe_app.bootstrap;
 
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 import springframework.recipe_app.domain.*;
 import springframework.recipe_app.repositories.CategoryRepository;
 import springframework.recipe_app.repositories.RecipeRepository;
 import springframework.recipe_app.repositories.UnitOfMeasureRepository;
 
 import java.math.BigDecimal;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class RecipeBootstrap {
+
+@Component
+public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
@@ -21,6 +25,11 @@ public class RecipeBootstrap {
         this.categoryRepository = categoryRepository;
         this.recipeRepository = recipeRepository;
         this.unitOfMeasureRepository = unitOfMeasureRepository;
+    }
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        recipeRepository.saveAll(getRecipes());
     }
 
     private List<Recipe> getRecipes(){
@@ -199,4 +208,6 @@ public class RecipeBootstrap {
 
         return recipes;
     }
+
+
 }
