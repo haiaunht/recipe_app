@@ -23,7 +23,7 @@
             <div class="pannel-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+                        <!--/*@thymesVar id="recipe" type="springframework.recipe_app.domain.Recipe"*/-->
                         <h1 class="panel-title" th:text="${recipe.description}">Recipe Description Here!</h1>
                     </div>
                     <div class="panel-body">
@@ -35,7 +35,7 @@
                                 <ul>
                                     <li th:remove="all">cat one</li>
                                     <li th:remove="all">cat two</li>
-                                    <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+                                    <!--/*@thymesVar id="recipe" type="springframework.recipe_app.domain.Recipe"*/-->
                                     <li th:each="category:${recipe.categories}" th:text="${category.getDescription()}">cat three</li>
                                 </ul>
                             </div>
@@ -91,7 +91,7 @@
                                 <h1 class="panel-title" >Ingredients</h1>
                             </div>
                             <div class="col-md-1">
-                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredienSet'}" role="button">View</a>
+                                <a class="btn btn-default" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}" role="button">View</a>
                             </div>
                         </div>
                     </div>
@@ -101,8 +101,7 @@
                                 <ul>
                                     <li th:remove="all">1 Cup of milk</li>
                                     <li th:remove="all">1 Teaspoon of chocolate</li>
-                                    <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
-                                    <li th:each="ingredient:${recipe.ingredientSet}"
+                                    <li th:each="ingredient : ${recipe.ingredientSet}"
                                         th:text="${ (ingredient.getAmount())
                                         + ' ' + ingredient.uom.getDescription()
                                         + ' - ' + ingredient.getDescription()}">1 Teaspoon of Sugar</li>
